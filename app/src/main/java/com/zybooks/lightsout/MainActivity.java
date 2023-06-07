@@ -80,8 +80,12 @@ public class MainActivity extends AppCompatActivity {
             int col = buttonIndex % GRID_SIZE;
 
             if (mGame.isLightOn(row, col)) {
+                gridButton.setText(getText(R.string.on));
+                gridButton.setTextColor(getColor(R.color.black));
                 gridButton.setBackgroundColor(mLightOnColor);
             } else {
+                gridButton.setText(getText(R.string.off));
+                gridButton.setTextColor(getColor(R.color.yellow));
                 gridButton.setBackgroundColor(mLightOffColor);
             }
         }
