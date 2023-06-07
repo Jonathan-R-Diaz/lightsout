@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
         for (int buttonIndex = 0; buttonIndex < mLightGrid.getChildCount(); buttonIndex++) {
             Button gridButton = (Button) mLightGrid.getChildAt(buttonIndex);
             gridButton.setOnClickListener(this::onLightButtonClick);
+            if (buttonIndex == 0)
+                gridButton.setOnLongClickListener(this::onLongButtonClick);
         }
 
         mLightOnColor = ContextCompat.getColor(this, R.color.yellow);
@@ -60,17 +62,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void setOnLongClickListener(View view){
 
-        // Find the button's row and col
-        int buttonIndex = mLightGrid.indexOfChild(view);
-        int row = buttonIndex / GRID_SIZE;
-        int col = buttonIndex % GRID_SIZE;
-
+    public boolean onLongButtonClick(View view){
         mGame.blackout();
-        if (row == 0 && col == 0){
-            mGame.blackout();
-        }
+        setButtonColors();
+        Toast.makeText(this, R.string.congrats, Toast.LENGTH_SHORT).show();
+        return true;
     }
 
     private void setButtonColors() {
