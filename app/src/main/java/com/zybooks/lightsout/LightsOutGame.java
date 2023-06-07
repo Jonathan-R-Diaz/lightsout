@@ -1,3 +1,5 @@
+//MODEL
+
 package com.zybooks.lightsout;
 
 import java.util.Random;
@@ -38,6 +40,14 @@ public class LightsOutGame {
         }
         if (col < GRID_SIZE - 1) {
             mLightsGrid[row][col + 1] = !mLightsGrid[row][col + 1];
+        }
+    }
+
+    public void blackout(){
+        for (int row = 0; row < GRID_SIZE; row++){
+            for (int col = 0; col < GRID_SIZE; col++){
+                mLightsGrid[row][col] = false;
+            }
         }
     }
 
